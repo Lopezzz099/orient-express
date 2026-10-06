@@ -33,16 +33,42 @@ function shapeFor(asset: Asset, selected: boolean): string {
   </span>`;
 }
 
+function applyVisibility(group: LayerGroup, markers: Map<string, Marker>, visibleIds: string[]) {
+  markers.forEach((marker, id) => {
+    const shouldShow = visibleIds.includes(id);
+    if (shouldShow && !group.hasLayer(marker)) group.addLayer(marker);
+    if (!shouldShow && group.hasLayer(marker)) group.removeLayer(marker);
+  });
+}
+
+function applySelection(L: typeof import("leaflet"), map: LeafletMap, markers: Map<string, Marker>, selectedId: string | null) {
+  markers.forEach((marker, id) => {
+    const asset = assets.find((a) => a.id === id);
+    if (!asset) return;
+    const selected = id === selectedId;
+    marker.setIcon(L.divIcon({ html: shapeFor(asset, selected), className: "", iconSize: [44, 44], iconAnchor: [22, 22] }));
+    marker.setZIndexOffset(selected ? 1000 : 0);
+  });
+  const target = assets.find((a) => a.id === selectedId);
+  if (target) {
+    map.flyTo([target.lat, target.lng], Math.max(map.getZoom(), 8), { animate: !prefersReducedMotion(), duration: 0.8 });
+  }
+}
+
 export function OperationsMap({ visibleIds, selectedId, onSelect, onStatus, resetSignal }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
   const leafletRef = useRef<typeof import("leaflet") | null>(null);
   const markersRef = useRef<Map<string, Marker>>(new Map());
   const groupRef = useRef<LayerGroup | null>(null);
+  const visibleRef = useRef(visibleIds);
+  const selectedRef = useRef(selectedId);
   const onSelectRef = useRef(onSelect);
   const onStatusRef = useRef(onStatus);
 
   useEffect(() => {
+    visibleRef.current = visibleIds;
+    selectedRef.current = selectedId;
     onSelectRef.current = onSelect;
     onStatusRef.current = onStatus;
   });
@@ -107,6 +133,8 @@ export function OperationsMap({ visibleIds, selectedId, onSelect, onStatus, rese
         // El zoom con la rueda se activa solo cuando el mapa tiene el foco, para no atrapar el scroll de la página.
         map.on("focus", () => map.scrollWheelZoom.enable());
         map.on("blur", () => map.scrollWheelZoom.disable());
+        applyVisibility(group, markers, visibleRef.current);
+        applySelection(L, map, markers, selectedRef.current);
         onStatusRef.current("ready");
       } catch {
         if (!cancelled) onStatusRef.current("error");
@@ -126,11 +154,7 @@ export function OperationsMap({ visibleIds, selectedId, onSelect, onStatus, rese
   useEffect(() => {
     const group = groupRef.current;
     if (!group) return;
-    markersRef.current.forEach((marker, id) => {
-      const shouldShow = visibleIds.includes(id);
-      if (shouldShow && !group.hasLayer(marker)) group.addLayer(marker);
-      if (!shouldShow && group.hasLayer(marker)) group.removeLayer(marker);
-    });
+    applyVisibility(group, markersRef.current, visibleIds);
   }, [visibleIds]);
 
   // Selección: resalta el marcador y centra el mapa.
@@ -138,17 +162,7 @@ export function OperationsMap({ visibleIds, selectedId, onSelect, onStatus, rese
     const L = leafletRef.current;
     const map = mapRef.current;
     if (!L || !map) return;
-    markersRef.current.forEach((marker, id) => {
-      const asset = assets.find((a) => a.id === id);
-      if (!asset) return;
-      const selected = id === selectedId;
-      marker.setIcon(L.divIcon({ html: shapeFor(asset, selected), className: "", iconSize: [44, 44], iconAnchor: [22, 22] }));
-      marker.setZIndexOffset(selected ? 1000 : 0);
-    });
-    const target = assets.find((a) => a.id === selectedId);
-    if (target) {
-      map.flyTo([target.lat, target.lng], Math.max(map.getZoom(), 8), { animate: !prefersReducedMotion(), duration: 0.8 });
-    }
+    applySelection(L, map, markersRef.current, selectedId);
   }, [selectedId]);
 
   // Volver a mostrar todo.

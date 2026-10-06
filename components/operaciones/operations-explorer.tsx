@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@/components/ui/icons";
 import { assetTypeLabels, assets, type AssetType } from "@/lib/operations";
 import { textLink } from "@/lib/ui";
+import { useQueryString, writeQuery } from "@/lib/url-state";
 import { OperationsMap, type MapStatus } from "./operations-map";
 
 const types = Object.keys(assetTypeLabels) as AssetType[];
@@ -16,26 +17,35 @@ function formatCoords(lat: number, lng: number) {
 
 export function OperationsExplorer() {
   const uid = useId();
-  const [activeTypes, setActiveTypes] = useState<AssetType[]>(types);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
   const [status, setStatus] = useState<MapStatus>("loading");
   const [resetSignal, setResetSignal] = useState(0);
   const mapBoxRef = useRef<HTMLDivElement>(null);
+
+  // La URL guarda el estado: ?activo=loma-alta&tipos=yacimiento,terminal ("ninguno" si se desmarcan todos).
+  const search = useQueryString();
+  const { activeTypes, selectedId } = useMemo(() => {
+    const params = new URLSearchParams(search);
+    const raw = params.get("tipos");
+    const active = !raw ? types : raw === "ninguno" ? [] : types.filter((t) => raw.split(",").includes(t));
+    const activo = params.get("activo");
+    return { activeTypes: active, selectedId: activo && assets.some((a) => a.id === activo) ? activo : null };
+  }, [search]);
 
   const visible = useMemo(() => assets.filter((a) => activeTypes.includes(a.type)), [activeTypes]);
   const visibleIds = useMemo(() => visible.map((a) => a.id), [visible]);
   const selected = assets.find((a) => a.id === selectedId) ?? null;
 
   function toggleType(type: AssetType) {
-    setActiveTypes((current) => {
-      const next = current.includes(type) ? current.filter((t) => t !== type) : [...current, type];
-      return next;
+    const next = activeTypes.includes(type) ? activeTypes.filter((t) => t !== type) : [...activeTypes, type];
+    const keepSelected = selected !== null && next.includes(selected.type);
+    writeQuery({
+      tipos: next.length === types.length ? null : next.length === 0 ? "ninguno" : next.join(","),
+      activo: keepSelected ? selectedId : null,
     });
-    if (selected && selected.type === type && activeTypes.includes(type)) setSelectedId(null);
   }
 
   function select(id: string) {
-    setSelectedId(id);
+    writeQuery({ activo: id });
     // En pantallas chicas el mapa queda arriba de la lista: se lo acerca para que se vea el cambio.
     if (window.matchMedia("(max-width: 65.99rem)").matches) {
       const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -6,16 +6,27 @@ import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/format";
 import { jobAreas, jobLocations, jobs, type JobArea, type JobLocation } from "@/lib/jobs";
 import { fieldBase, fieldLabel, fieldOk, tag } from "@/lib/ui";
+import { useQueryString, writeQuery } from "@/lib/url-state";
 
 const SPONTANEOUS = "espontanea";
 
 export function CareersBoard() {
   const uid = useId();
-  const [area, setArea] = useState<JobArea | "">("");
-  const [location, setLocation] = useState<JobLocation | "">("");
   const [openId, setOpenId] = useState<string | null>(null);
   const [selected, setSelected] = useState<string>("");
   const formRef = useRef<HTMLDivElement>(null);
+
+  // Filtros en la URL: ?area=Ingeniería&lugar=Añelo
+  const search = useQueryString();
+  const { area, location } = useMemo(() => {
+    const params = new URLSearchParams(search);
+    const a = params.get("area") ?? "";
+    const l = params.get("lugar") ?? "";
+    return {
+      area: ((jobAreas as string[]).includes(a) ? a : "") as JobArea | "",
+      location: ((jobLocations as string[]).includes(l) ? l : "") as JobLocation | "",
+    };
+  }, [search]);
 
   const visible = useMemo(
     () => jobs.filter((job) => (!area || job.area === area) && (!location || job.location === location)),
@@ -77,7 +88,7 @@ export function CareersBoard() {
             <label htmlFor={`${uid}-area`} className={fieldLabel}>
               Área
             </label>
-            <select id={`${uid}-area`} value={area} onChange={(e) => setArea(e.target.value as JobArea | "")} className={`${fieldBase} ${fieldOk}`}>
+            <select id={`${uid}-area`} value={area} onChange={(e) => writeQuery({ area: e.target.value })} className={`${fieldBase} ${fieldOk}`}>
               <option value="">Todas las áreas</option>
               {jobAreas.map((a) => (
                 <option key={a} value={a}>
@@ -93,7 +104,7 @@ export function CareersBoard() {
             <select
               id={`${uid}-loc`}
               value={location}
-              onChange={(e) => setLocation(e.target.value as JobLocation | "")}
+              onChange={(e) => writeQuery({ lugar: e.target.value })}
               className={`${fieldBase} ${fieldOk}`}
             >
               <option value="">Todos los lugares</option>
@@ -119,8 +130,7 @@ export function CareersBoard() {
               variant="outline"
               className="mt-4"
               onClick={() => {
-                setArea("");
-                setLocation("");
+                writeQuery({ area: null, lugar: null });
               }}
             >
               Quitar filtros

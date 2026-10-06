@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { preconnect } from "react-dom";
 import { OperationsExplorer } from "@/components/operaciones/operations-explorer";
 import { PageHero } from "@/components/ui/page-hero";
 import { Section } from "@/components/ui/section";
@@ -13,6 +14,8 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function OperacionesPage() {
+  // El mapa pide teselas a OpenStreetMap: se abre la conexión antes de que Leaflet termine de cargar.
+  preconnect("https://tile.openstreetmap.org", { crossOrigin: "anonymous" });
   return (
     <>
       <PageHero

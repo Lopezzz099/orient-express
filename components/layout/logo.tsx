@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 /** Marca propia: un sol que sale sobre dos líneas de ducto. */
 export function LogoMark({ className = "size-9" }: { className?: string }) {
@@ -11,7 +14,8 @@ export function LogoMark({ className = "size-9" }: { className?: string }) {
   );
 }
 
-export function Logo({ current = false }: { current?: boolean }) {
+export function Logo() {
+  const current = usePathname() === "/";
   return (
     <Link
       href="/"
@@ -20,7 +24,7 @@ export function Logo({ current = false }: { current?: boolean }) {
       className="group inline-flex min-h-11 items-center gap-3 text-white"
     >
       <LogoMark />
-      <span className="flex flex-col leading-none">
+      <span className="flex flex-col leading-none" translate="no">
         <span className="text-[1.0625rem] font-bold tracking-[0.08em] [font-stretch:118%]">ORIENT</span>
         <span className="mt-1 text-[0.6875rem] font-medium tracking-[0.34em] text-ink-300 [font-stretch:118%]">
           EXPRESS

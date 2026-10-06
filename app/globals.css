@@ -84,7 +84,9 @@
 
 @layer base {
   html {
-    scroll-padding-top: calc(var(--spacing-header) + 1rem);
+    scroll-padding-top: calc(var(--spacing-header) + 4rem);
+    color-scheme: light;
+    -webkit-tap-highlight-color: oklch(0.42 0.08 195 / 0.15);
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
@@ -100,6 +102,14 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     overflow-x: clip;
+  }
+
+  a,
+  button,
+  summary,
+  label,
+  select {
+    touch-action: manipulation;
   }
 
   h1,

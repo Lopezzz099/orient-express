@@ -92,11 +92,14 @@ export function MobileNav() {
         </svg>
       </button>
 
-      <div
-        aria-hidden="true"
+      <button
+        type="button"
+        tabIndex={-1}
+        aria-label="Cerrar menú"
+        inert={!open}
         onClick={close}
         className={[
-          "fixed inset-0 z-(--z-backdrop) bg-ink-950/75 transition-[opacity,visibility] duration-300 ease-out-quart",
+          "fixed inset-0 z-(--z-backdrop) cursor-default bg-ink-950/75 transition-[opacity,visibility] duration-300 ease-out-quart",
           open ? "visible opacity-100" : "invisible opacity-0",
         ].join(" ")}
       />
@@ -109,7 +112,7 @@ export function MobileNav() {
         aria-label="Menú principal"
         inert={!open}
         className={[
-          "surface-dark fixed inset-y-0 right-0 z-(--z-drawer) flex w-[min(90vw,24rem)] flex-col bg-ink-950 text-white",
+          "surface-dark fixed inset-y-0 right-0 z-(--z-drawer) flex w-[min(90vw,24rem)] flex-col overscroll-contain bg-ink-950 text-white",
           "shadow-[-8px_0_32px_-8px_oklch(0_0_0/0.5)] transition-[transform,visibility] duration-300 ease-out-quart",
           open ? "visible translate-x-0" : "invisible translate-x-full",
         ].join(" ")}

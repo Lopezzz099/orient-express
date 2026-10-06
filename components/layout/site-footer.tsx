@@ -18,7 +18,7 @@ export function SiteFooter() {
         <div>
           <div className="flex items-center gap-3 text-white">
             <LogoMark />
-            <p className="text-lg font-bold tracking-[0.08em] [font-stretch:118%]">ORIENT EXPRESS</p>
+            <p translate="no" className="text-lg font-bold tracking-[0.08em] [font-stretch:118%]">ORIENT EXPRESS</p>
           </div>
           <address className="mt-6 max-w-xs text-[0.9375rem] not-italic leading-relaxed">
             {site.address.street}

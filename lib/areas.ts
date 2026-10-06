@@ -37,7 +37,7 @@ export const businessAreas: BusinessArea[] = [
     image: media.refineriaAerea,
     figures: [
       { value: "38.000", label: "barriles por día de capacidad de destilación" },
-      { value: "89 %", label: "de utilización promedio en 2025" },
+      { value: "89 %", label: "de utilización promedio en 2025" },
     ],
     points: [
       "Unidades de destilación, hidrotratamiento y reformado",
@@ -53,8 +53,8 @@ export const businessAreas: BusinessArea[] = [
       "Una red de 720 km de oleoductos lleva el crudo desde los yacimientos hasta la Terminal Allen y, desde allí, hasta la Terminal Costa Sur, sobre el Atlántico. Cada tramo tiene válvulas de bloqueo, detección de fugas y un centro de control que opera las 24 horas.",
     image: media.terminalBuques,
     figures: [
-      { value: "720 km", label: "de oleoductos propios" },
-      { value: "230.000 m³", label: "de capacidad de almacenaje" },
+      { value: "720 km", label: "de oleoductos propios" },
+      { value: "230.000 m³", label: "de capacidad de almacenaje" },
     ],
     points: [
       "Centro de control con operación continua",
@@ -70,8 +70,8 @@ export const businessAreas: BusinessArea[] = [
       "El Parque Solar Mari Menuco abastece parte de la demanda eléctrica de nuestras plantas. En paralelo, reemplazamos motores a gas por equipos eléctricos en los yacimientos y evaluamos el aprovechamiento de gas asociado que hoy se quema.",
     image: media.solar,
     figures: [
-      { value: "40 MW", label: "de potencia instalada en energía solar" },
-      { value: "22 %", label: "de la electricidad de planta de origen renovable" },
+      { value: "40 MW", label: "de potencia instalada en energía solar" },
+      { value: "22 %", label: "de la electricidad de planta de origen renovable" },
     ],
     points: [
       "Parque solar conectado a la red provincial",

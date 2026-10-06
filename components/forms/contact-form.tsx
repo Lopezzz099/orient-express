@@ -229,6 +229,7 @@ export function ContactForm({
                 {...common}
                 type={field.type}
                 inputMode={field.type === "tel" ? "tel" : field.type === "email" ? "email" : undefined}
+                spellCheck={field.type === "text" ? undefined : false}
                 onChange={(e) => onChange(field, e.target.value)}
               />
             )}
