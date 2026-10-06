@@ -1,26 +1,178 @@
 @import "tailwindcss";
 
+/*
+ * Identidad de Orient Express.
+ * Escena: un ingeniero revisa un informe de campo en una oficina de Neuquén,
+ * con luz de mañana y el tablero de control encendido al fondo.
+ * Estrategia de color: comprometida. Un verde petróleo carga la marca,
+ * un ámbar de señalización marca lo que importa. Superficies neutras sin tinte cálido.
+ */
+@theme {
+  /* Puntos de corte propios */
+  --breakpoint-*: initial;
+  --breakpoint-narrow: 26rem;
+  --breakpoint-tablet: 46rem;
+  --breakpoint-laptop: 66rem;
+  --breakpoint-wide: 90rem;
+
+  /* Color (OKLCH) */
+  --color-*: initial;
+  --color-white: oklch(1 0 0);
+  --color-paper: oklch(1 0 0);
+  --color-mist: oklch(0.968 0.004 235);
+  --color-line: oklch(0.89 0.008 235);
+  --color-ink-950: oklch(0.17 0.026 240);
+  --color-ink-900: oklch(0.22 0.03 238);
+  --color-ink-800: oklch(0.3 0.034 236);
+  --color-ink-600: oklch(0.46 0.025 238);
+  --color-ink-300: oklch(0.8 0.014 235);
+  --color-petrol-900: oklch(0.32 0.06 200);
+  --color-petrol-700: oklch(0.42 0.08 195);
+  --color-petrol-600: oklch(0.5 0.09 190);
+  --color-petrol-300: oklch(0.8 0.07 190);
+  --color-petrol-100: oklch(0.94 0.022 195);
+  --color-signal-400: oklch(0.83 0.15 78);
+  --color-signal-500: oklch(0.78 0.15 72);
+  --color-signal-600: oklch(0.7 0.15 66);
+  --color-danger: oklch(0.5 0.19 27);
+  --color-danger-soft: oklch(0.96 0.03 27);
+  --color-ok: oklch(0.45 0.11 155);
+  --color-ok-soft: oklch(0.96 0.035 155);
+
+  /* Tipografía: Archivo (ancho variable) para títulos e interfaz, Source Serif 4 para lectura */
+  --font-sans: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-source-serif), Georgia, "Times New Roman", serif;
+
+  /* Tamaños fluidos */
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.35;
+  --text-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --text-body--line-height: 1.65;
+  --text-lede: clamp(1.125rem, 1.02rem + 0.55vw, 1.4rem);
+  --text-lede--line-height: 1.5;
+  --text-h3: clamp(1.25rem, 1.12rem + 0.65vw, 1.625rem);
+  --text-h3--line-height: 1.25;
+  --text-h2: clamp(1.75rem, 1.3rem + 2vw, 3rem);
+  --text-h2--line-height: 1.1;
+  --text-h1: clamp(2.25rem, 1.5rem + 3.6vw, 4.5rem);
+  --text-h1--line-height: 1.04;
+  --text-display: clamp(2.5rem, 1.3rem + 5.4vw, 5.75rem);
+  --text-display--line-height: 1;
+  --text-figure: clamp(2.5rem, 1.8rem + 3vw, 4.25rem);
+  --text-figure--line-height: 1;
+
+  /* Espaciado y contenedor */
+  --spacing-gutter: clamp(1.125rem, 0.6rem + 2.4vw, 2.75rem);
+  --spacing-section: clamp(4rem, 2.6rem + 6.5vw, 8.5rem);
+  --spacing-header: 4.5rem;
+  --container-page: 82rem;
+  --container-prose: 42rem;
+
+  /* Movimiento */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Escala de capas */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --z-sticky: 30;
+  --z-header: 40;
+  --z-backdrop: 50;
+  --z-drawer: 60;
+  --z-toast: 70;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-padding-top: calc(var(--spacing-header) + 1rem);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    font-stretch: 100%;
+    font-feature-settings: "kern", "liga";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-sans);
+    font-weight: 650;
+    font-stretch: 108%;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    color: var(--color-ink-950);
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  .surface-dark h1,
+  .surface-dark h2,
+  .surface-dark h3,
+  .surface-dark h4 {
+    color: var(--color-white);
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* Foco visible: petróleo sobre claro, ámbar sobre oscuro */
+  :focus-visible {
+    outline: 3px solid var(--color-petrol-700);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .surface-dark :focus-visible {
+    outline-color: var(--color-signal-500);
+  }
+
+  ::selection {
+    background: var(--color-signal-500);
+    color: var(--color-ink-950);
+  }
+
+  /* Leaflet: que el mapa no pise el header ni el panel móvil */
+  .leaflet-container {
+    font-family: var(--font-sans);
+    z-index: 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: 0.75rem;
+    z-index: calc(var(--z-toast) + 1);
+    transform: translateY(-200%);
+  }
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
