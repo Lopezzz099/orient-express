@@ -1,0 +1,22 @@
+# dependencias
+node_modules
+/.pnp
+.pnp.*
+
+# next
+.next
+out
+next-env.d.ts
+
+# entorno (el ejemplo sí se versiona)
+.env*
+!.env.example
+
+# varios
+.DS_Store
+*.pem
+*.tsbuildinfo
+npm-debug.log*
+.vercel
+coverage
+.impeccable
