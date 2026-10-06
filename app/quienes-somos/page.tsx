@@ -90,7 +90,7 @@ export default function QuienesSomosPage() {
         </ul>
       </Section>
 
-      <Section tone="ink" id="gobierno" labelledBy="gobierno-titulo">
+      <Section tone="petrol" id="gobierno" labelledBy="gobierno-titulo">
         <SectionIntro
           id="gobierno-titulo"
           title="Gobierno corporativo"

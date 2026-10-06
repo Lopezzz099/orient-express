@@ -116,8 +116,8 @@ export function Hero() {
       ) : null}
       <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-ink-950 via-ink-950/55 to-ink-950/35" />
 
-      <div className={`${pageContainer} relative pt-12 pb-8 laptop:pt-24 laptop:pb-14`}>
-        <h1 id="hero-titulo" className="max-w-4xl text-display">
+      <div className={`${pageContainer} relative pt-12 pb-8 laptop:pt-16 laptop:pb-12`}>
+        <h1 id="hero-titulo" className="max-w-5xl text-display">
           Producimos, refinamos y transportamos energía desde Neuquén
         </h1>
         <p className="mt-6 max-w-2xl font-serif text-lede text-white/90">
