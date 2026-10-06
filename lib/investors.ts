@@ -66,16 +66,17 @@ export type CalendarEvent = {
   date: string;
   title: string;
   detail: string;
+  done?: boolean;
 };
 
-/** Hoy en el sitio de demostración es una fecha fija: se muestran próximos eventos y últimos realizados. */
+/** Los eventos ya realizados llevan done: true, así la página no depende de la fecha de compilación. */
 export const financialCalendar: CalendarEvent[] = [
   { date: "2026-11-12", title: "Resultados del tercer trimestre de 2026", detail: "Publicación a las 18:00 y conferencia con analistas a las 10:00 del día siguiente." },
   { date: "2027-03-04", title: "Resultados del cuarto trimestre y del año 2026", detail: "Publicación de estados financieros del ejercicio." },
   { date: "2027-04-27", title: "Asamblea ordinaria de accionistas", detail: "Sede de Neuquén Capital. La convocatoria se publica con 30 días de anticipación." },
   { date: "2027-05-13", title: "Resultados del primer trimestre de 2027", detail: "Publicación a las 18:00." },
-  { date: "2026-08-13", title: "Resultados del segundo trimestre de 2026", detail: "Publicados." },
-  { date: "2026-05-14", title: "Resultados del primer trimestre de 2026", detail: "Publicados." },
+  { date: "2026-08-13", title: "Resultados del segundo trimestre de 2026", detail: "Publicados.", done: true },
+  { date: "2026-05-14", title: "Resultados del primer trimestre de 2026", detail: "Publicados.", done: true },
 ];
 
 export function documentSize(file: string): string {
