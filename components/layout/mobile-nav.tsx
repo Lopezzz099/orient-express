@@ -30,7 +30,8 @@ export function MobileNav() {
   // Escape cierra; Tab queda dentro del panel; el fondo no hace scroll.
   useEffect(() => {
     if (!open) return;
-    closeRef.current?.focus();
+    // El panel recién pasa a ser visible en este cuadro: se espera un instante para poder enfocarlo.
+    const timer = window.setTimeout(() => closeRef.current?.focus(), 50);
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
@@ -56,6 +57,7 @@ export function MobileNav() {
 
     document.addEventListener("keydown", onKeyDown);
     return () => {
+      window.clearTimeout(timer);
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = previousOverflow;
     };

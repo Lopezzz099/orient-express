@@ -50,7 +50,7 @@ export function SiteFooter() {
             {audiences.map((a) => (
               <li key={a.email}>
                 <span className="block text-label text-ink-300">{a.label}</span>
-                <a href={`mailto:${a.email}`} className={textLinkInverse}>
+                <a href={`mailto:${a.email}`} className={`${textLinkInverse} inline-flex min-h-11 items-center`}>
                   {a.email}
                 </a>
               </li>
@@ -69,7 +69,7 @@ export function SiteFooter() {
           <p>© {new Date().getFullYear()} {site.legalName} (empresa ficticia). Diseño de ejemplo.</p>
           <p>
             Fotografías y video:{" "}
-            <a href="https://www.pexels.com" className={textLinkInverse} rel="noopener noreferrer">
+            <a href="https://www.pexels.com" className={`${textLinkInverse} inline-flex min-h-11 items-center`} rel="noopener noreferrer">
               Pexels
             </a>
             . Mapa: © colaboradores de OpenStreetMap.

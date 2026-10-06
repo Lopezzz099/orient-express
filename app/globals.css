@@ -151,6 +151,15 @@
     font-family: var(--font-sans);
     z-index: 0;
   }
+
+  /* Controles de zoom con objetivo táctil de 44 px */
+  .leaflet-touch .leaflet-bar a,
+  .leaflet-bar a {
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 22px;
+  }
 }
 
 @layer utilities {

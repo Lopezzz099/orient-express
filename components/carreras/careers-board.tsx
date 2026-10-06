@@ -66,7 +66,7 @@ export function CareersBoard() {
   function apply(id: string) {
     setSelected(id);
     formRef.current?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-    requestAnimationFrame(() => formRef.current?.querySelector<HTMLElement>("select, input")?.focus({ preventScroll: true }));
+    window.setTimeout(() => formRef.current?.querySelector<HTMLElement>("select, input")?.focus({ preventScroll: true }), 50);
   }
 
   return (

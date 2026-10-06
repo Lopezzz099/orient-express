@@ -5,6 +5,9 @@ import type { LayerGroup, Map as LeafletMap, Marker } from "leaflet";
 import { useEffect, useRef } from "react";
 import { assetTypeLabels, assets, mapCenter, pipelines, type Asset } from "@/lib/operations";
 
+// Opcional: permite usar otro servidor de teselas. Por defecto, OpenStreetMap.
+const TILE_URL = process.env.NEXT_PUBLIC_MAP_TILE_URL || "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+
 export type MapStatus = "loading" | "ready" | "error";
 
 type Props = {
@@ -68,7 +71,7 @@ export function OperationsMap({ visibleIds, selectedId, onSelect, onStatus, rese
 
         let loaded = 0;
         let failed = 0;
-        const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        const tiles = L.tileLayer(TILE_URL, {
           maxZoom: 19,
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">colaboradores de OpenStreetMap</a>',
         });

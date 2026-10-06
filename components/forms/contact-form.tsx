@@ -68,15 +68,18 @@ export function ContactForm({
   const [errors, setErrors] = useState<Errors>({});
   const [showSummary, setShowSummary] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
-  const [lastPresets, setLastPresets] = useState(presets);
+  // Se compara por contenido: el objeto `presets` puede ser nuevo en cada render del padre.
+  const presetKey = JSON.stringify(presets);
+  const [lastPresetKey, setLastPresetKey] = useState(presetKey);
 
   // Si cambia un valor preestablecido desde afuera, se refleja en el campo (ajuste durante el render).
-  if (lastPresets !== presets) {
-    setLastPresets(presets);
+  if (lastPresetKey !== presetKey) {
+    const previous: Values = JSON.parse(lastPresetKey);
+    setLastPresetKey(presetKey);
     const next = { ...values };
     let changed = false;
     for (const [key, value] of Object.entries(presets)) {
-      if (value !== lastPresets[key] && key in next) {
+      if (value !== previous[key] && key in next) {
         next[key] = value;
         changed = true;
       }
@@ -116,7 +119,7 @@ export function ContactForm({
     if (Object.keys(nextErrors).length > 0) {
       setShowSummary(true);
       // El resumen recibe el foco para que lectores de pantalla y teclado lo encuentren enseguida.
-      requestAnimationFrame(() => summaryRef.current?.focus());
+      window.setTimeout(() => summaryRef.current?.focus(), 0);
       return;
     }
     setShowSummary(false);
