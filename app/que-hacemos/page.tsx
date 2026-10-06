@@ -54,7 +54,7 @@ export default function QueHacemosPage() {
                 <ul className="mt-6 space-y-3">
                   {area.points.map((point) => (
                     <li key={point} className="flex gap-3">
-                      <span aria-hidden="true" className="mt-[0.7em] size-1.5 shrink-0 bg-signal-600" />
+                      <span aria-hidden="true" className="mt-[0.7em] size-1.5 shrink-0 bg-petrol-700" />
                       <span>{point}</span>
                     </li>
                   ))}

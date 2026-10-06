@@ -56,11 +56,10 @@ export const pageContainer = "mx-auto w-full max-w-page px-gutter";
 
 /** Campos de formulario. Cada estado define su propio borde y fondo. */
 export const fieldBase =
-  "block w-full min-h-12 rounded-sm border bg-white px-3.5 py-2.5 text-base text-ink-950 " +
-  "placeholder:text-ink-600 transition-colors duration-200 hover:border-ink-600 " +
-  "focus-visible:border-petrol-700";
-export const fieldOk = "border-ink-300";
-export const fieldError = "border-danger bg-danger-soft";
+  "block w-full min-h-12 rounded-sm border px-3.5 py-2.5 text-base text-ink-950 " +
+  "placeholder:text-ink-600 transition-colors duration-200";
+export const fieldOk = "border-ink-600 bg-white hover:border-ink-950 focus-visible:border-petrol-700";
+export const fieldError = "border-danger bg-danger-soft hover:border-danger focus-visible:border-danger";
 
 export const fieldLabel = "mb-1.5 block text-[0.9375rem] font-semibold text-ink-950";
 export const fieldHint = "mt-1.5 text-label text-ink-600";

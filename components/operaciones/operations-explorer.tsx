@@ -79,7 +79,7 @@ export function OperationsExplorer() {
                       "peer-focus-visible:outline-3 peer-focus-visible:outline-offset-3 peer-focus-visible:outline-petrol-700",
                       checked
                         ? "border-ink-950 bg-ink-950 text-white"
-                        : "border-ink-300 bg-white text-ink-900 hover:border-ink-600",
+                        : "border-ink-600 bg-white text-ink-900 hover:border-ink-950",
                     ].join(" ")}
                   >
                     <span aria-hidden="true" className="size-3 rounded-full border-2 border-white" style={{ background: assetTypeLabels[type].color }} />
