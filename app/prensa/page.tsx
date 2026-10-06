@@ -22,7 +22,7 @@ export default function PrensaPage() {
       <PageHero
         title="Prensa"
         lede="Comunicados y noticias de la compañía, en orden cronológico. Para entrevistas o material gráfico, escribí al equipo de prensa."
-        image={media.terminalBuques}
+        image={media.solar}
       />
 
       <Section labelledBy="noticias-titulo">

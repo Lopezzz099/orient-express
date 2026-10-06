@@ -30,7 +30,7 @@ export default function QuienesSomosPage() {
       <PageHero
         title="Quiénes somos"
         lede="Orient Express nació en Neuquén en 1994 con doce empleados. Hoy emplea a 1.340 personas y opera una cadena integrada de petróleo y gas."
-        image={media.refineriaAerea}
+        image={media.refineriaTorre}
       />
 
       <Section labelledBy="mision-titulo">

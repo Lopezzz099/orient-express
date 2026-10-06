@@ -27,7 +27,7 @@ export default function InversoresPage() {
       <PageHero
         title="Inversores"
         lede="Resultados trimestrales, estados financieros auditados y calendario de publicaciones. Todo el material de esta sección es ficticio."
-        image={media.refineriaTorre}
+        image={media.terminalBuques}
       />
 
       <SectionNav

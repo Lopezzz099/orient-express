@@ -22,7 +22,7 @@ export default function QueHacemosPage() {
       <PageHero
         title="Qué hacemos"
         lede="Cuatro áreas que cubren el recorrido completo del hidrocarburo, desde el pozo hasta el cliente, y una línea nueva de generación eléctrica."
-        image={media.refineriaTorre}
+        image={media.yacimiento}
       >
         <ButtonLink href="/operaciones" variant="accent" size="lg">
           Ver el mapa de operaciones <ArrowRight />
