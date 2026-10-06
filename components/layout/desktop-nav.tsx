@@ -9,7 +9,7 @@ export function DesktopNav() {
   const pathname = usePathname();
   const contactActive = isActive(pathname, contactNav.href);
   return (
-    <nav aria-label="Principal" className="hidden laptop:block">
+    <nav aria-label="Principal" className="hidden nav:block">
       <ul className="flex items-center gap-1 wide:gap-2">
         {primaryNav.map((item) => {
           const active = isActive(pathname, item.href);
@@ -19,7 +19,7 @@ export function DesktopNav() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={[
-                  "relative inline-flex min-h-11 items-center px-3 text-[0.9375rem] font-medium transition-colors duration-200",
+                  "relative inline-flex min-h-11 items-center whitespace-nowrap px-3 text-[0.9375rem] font-medium transition-colors duration-200",
                   "after:absolute after:inset-x-3 after:bottom-1.5 after:h-0.5 after:bg-signal-500 after:transition-transform after:duration-300 after:ease-out-quart",
                   active
                     ? "text-white after:scale-x-100"

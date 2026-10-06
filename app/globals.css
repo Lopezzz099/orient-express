@@ -13,6 +13,8 @@
   --breakpoint-narrow: 26rem;
   --breakpoint-tablet: 46rem;
   --breakpoint-laptop: 66rem;
+  /* El header necesita más ancho que el resto del layout para mostrar los 8 enlaces sin apretarse */
+  --breakpoint-nav: 72rem;
   --breakpoint-wide: 90rem;
 
   /* Color (OKLCH) */

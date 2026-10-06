@@ -65,7 +65,7 @@ export function MobileNav() {
 
   // Si se agranda la ventana hasta el modo escritorio, el panel se cierra solo.
   useEffect(() => {
-    const query = window.matchMedia("(min-width: 66rem)");
+    const query = window.matchMedia("(min-width: 72rem)");
     const onChange = () => {
       if (query.matches) setOpen(false);
     };
@@ -77,7 +77,7 @@ export function MobileNav() {
   const contactActive = isActive(pathname, contactNav.href);
 
   return (
-    <div className="laptop:hidden">
+    <div className="nav:hidden">
       <button
         ref={toggleRef}
         type="button"
