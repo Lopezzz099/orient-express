@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
 import { ButtonLink } from "@/components/ui/button";
 import { Pause, Play } from "@/components/ui/icons";
 import { heroVideo, media } from "@/lib/media";
@@ -87,6 +87,7 @@ export function Hero() {
       aria-labelledby="hero-titulo"
       className="surface-dark relative flex min-h-[calc(100dvh-var(--spacing-header))] flex-col justify-end overflow-hidden bg-ink-950 text-white"
     >
+      <div className="hero-media absolute inset-x-0 bottom-0 -top-[14vh]">
       <Image
         src={heroVideo.poster}
         alt={media.heroPoster.alt}
@@ -114,16 +115,17 @@ export function Hero() {
           <source src={heroVideo.src} type="video/mp4" />
         </video>
       ) : null}
+      </div>
       <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-ink-950 via-ink-950/55 to-ink-950/35" />
 
-      <div className={`${pageContainer} relative pt-12 pb-8 laptop:pt-16 laptop:pb-12`}>
-        <h1 id="hero-titulo" className="max-w-5xl text-display">
+      <div className={`${pageContainer} hero-copy relative pt-12 pb-8 laptop:pt-16 laptop:pb-12`}>
+        <h1 id="hero-titulo" className="motion-rise max-w-5xl text-display">
           Producimos, refinamos y transportamos energía desde Neuquén
         </h1>
-        <p className="mt-6 max-w-2xl font-serif text-lede text-white/90">
+        <p className="motion-rise mt-6 max-w-2xl font-serif text-lede text-white/90" style={{ "--i": 2 } as CSSProperties}>
           Orient Express opera tres yacimientos, una refinería y 720 km de oleoductos entre la cuenca neuquina y el Atlántico.
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="motion-rise mt-8 flex flex-wrap gap-3" style={{ "--i": 3 } as CSSProperties}>
           <ButtonLink href="/operaciones" variant="accent" size="lg">
             Ver operaciones
           </ButtonLink>

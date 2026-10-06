@@ -14,6 +14,8 @@ export function SiteHeader() {
           <MobileNav />
         </div>
       </div>
+      {/* Avance de lectura: un trazo ámbar que crece con el scroll */}
+      <div aria-hidden="true" className="scroll-progress absolute bottom-0 left-0 h-0.5 w-full scale-x-0 bg-signal-500" />
     </header>
   );
 }

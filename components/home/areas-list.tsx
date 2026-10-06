@@ -24,12 +24,12 @@ export function AreasList() {
 
         <ul className="border-b border-line">
           {businessAreas.map((area) => (
-            <li key={area.slug} className="border-t border-line">
+            <li key={area.slug} className="reveal border-t border-line">
               <Link
                 href={`/que-hacemos#${area.slug}`}
                 className="group grid gap-5 py-7 tablet:grid-cols-[13rem_1fr] tablet:gap-8"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-mist tablet:aspect-[4/3]">
+                <div className="relative aspect-[4/3] overflow-hidden bg-mist">
                   <Image
                     src={area.image.src}
                     alt={area.image.alt}

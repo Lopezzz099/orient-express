@@ -142,7 +142,7 @@ export function CareersBoard() {
               const open = openId === job.id;
               const panelId = `${uid}-${job.id}`;
               return (
-                <li key={job.id} className="border-t border-line py-6">
+                <li key={job.id} className="reveal border-t border-line py-6">
                   <div className="flex flex-wrap items-start justify-between gap-x-8 gap-y-4">
                     <div className="min-w-0 flex-1 basis-80">
                       <h3 className="text-h3">{job.title}</h3>

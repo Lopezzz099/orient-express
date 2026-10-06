@@ -49,7 +49,7 @@ export default function InversoresPage() {
             <h3 className="text-h3">Próximas fechas</h3>
             <ol className="mt-4 border-b border-line">
               {upcoming.map((event) => (
-                <li key={event.date} className="grid gap-1 border-t border-line py-5 tablet:grid-cols-[11rem_1fr] tablet:gap-8">
+                <li key={event.date} className="reveal grid gap-1 border-t border-line py-5 tablet:grid-cols-[11rem_1fr] tablet:gap-8">
                   <time dateTime={event.date} className="num text-lg font-semibold text-petrol-700">
                     {formatShortDate(event.date)}
                   </time>
@@ -85,7 +85,7 @@ export default function InversoresPage() {
         />
         <ul className="mt-12 border-b border-line">
           {investorDocuments.map((doc) => (
-            <li key={doc.slug} className="grid gap-4 border-t border-line py-6 tablet:grid-cols-[1fr_auto] tablet:items-center tablet:gap-10">
+            <li key={doc.slug} className="reveal grid gap-4 border-t border-line py-6 tablet:grid-cols-[1fr_auto] tablet:items-center tablet:gap-10">
               <div>
                 <div className="flex flex-wrap items-center gap-3 text-[0.9375rem] text-ink-600">
                   <span className={tag}>{doc.category}</span>

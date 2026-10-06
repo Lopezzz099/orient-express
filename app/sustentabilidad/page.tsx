@@ -33,7 +33,7 @@ export default function SustentabilidadPage() {
                 {pillar.title}
               </h2>
               <p className="mt-5 font-serif text-lede text-ink-600">{pillar.intro}</p>
-              <div className="relative mt-8 hidden aspect-[4/3] overflow-hidden bg-ink-800 laptop:block">
+              <div className="reveal-mask relative mt-8 hidden aspect-[4/3] overflow-hidden bg-ink-800 laptop:block">
                 <Image
                   src={pillar.image.src}
                   alt={pillar.image.alt}
@@ -48,7 +48,7 @@ export default function SustentabilidadPage() {
             <div>
               <ul className="border-b border-line">
                 {pillar.commitments.map((item) => (
-                  <li key={item.title} className="border-t border-line py-7">
+                  <li key={item.title} className="reveal border-t border-line py-7">
                     <h3 className="text-h3">{item.title}</h3>
                     <p className="mt-2 max-w-prose text-ink-600">{item.text}</p>
                     <dl className="mt-4 grid gap-x-8 gap-y-2 tablet:grid-cols-2">

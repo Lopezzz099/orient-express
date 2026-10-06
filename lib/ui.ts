@@ -8,7 +8,7 @@ export type ButtonVariant = "primary" | "accent" | "outline" | "inverse" | "outl
 export type ButtonSize = "sm" | "md" | "lg";
 
 const buttonBase =
-  "inline-flex cursor-pointer select-none items-center justify-center gap-2 rounded-sm border font-semibold " +
+  "group inline-flex cursor-pointer select-none items-center justify-center gap-2 rounded-sm border font-semibold " +
   "whitespace-nowrap transition-colors duration-200 ease-out-quart " +
   "disabled:cursor-not-allowed disabled:opacity-50 touch-manipulation";
 

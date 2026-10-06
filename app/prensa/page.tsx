@@ -33,7 +33,7 @@ export default function PrensaPage() {
             </h2>
             <ul className="mt-10 border-b border-line">
               {news.map((item) => (
-                <li key={item.slug} className="border-t border-line">
+                <li key={item.slug} className="reveal border-t border-line">
                   <article>
                     <Link href={`/prensa/${item.slug}`} className="group grid gap-5 py-7 tablet:grid-cols-[12rem_1fr] tablet:gap-8">
                       <div className="relative aspect-[4/3] overflow-hidden bg-mist">

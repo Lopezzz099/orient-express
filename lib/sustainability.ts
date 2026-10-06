@@ -99,3 +99,10 @@ export const pillars: SustainabilityPillar[] = [
     ],
   },
 ];
+
+/** Tres metas destacadas para la portada. `fraction` es el avance sobre la meta (0 a 1). */
+export const progressHighlights = [
+  { label: "Gas venteado y quemado", progress: "31 %", goal: "60 %", year: 2030, fraction: 31 / 60 },
+  { label: "Agua de proceso reutilizada", progress: "78 %", goal: "90 %", year: 2028, fraction: 78 / 90 },
+  { label: "Electricidad renovable", progress: "22 %", goal: "40 %", year: 2030, fraction: 22 / 40 },
+];

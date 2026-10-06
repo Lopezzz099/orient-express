@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
 import { ArrowRight } from "@/components/ui/icons";
+import { CountUp } from "@/components/ui/count-up";
 import { PageHero } from "@/components/ui/page-hero";
 import { Section } from "@/components/ui/section";
 import { SectionNav } from "@/components/ui/section-nav";
@@ -36,7 +37,7 @@ export default function QueHacemosPage() {
         return (
           <Section key={area.slug} id={area.slug} labelledBy={`${area.slug}-titulo`} tone={index % 2 === 0 ? "light" : "mist"}>
             <div className="grid items-center gap-10 laptop:grid-cols-2 laptop:gap-20">
-              <div className={imageFirst ? "laptop:order-2" : ""}>
+              <div className={`reveal ${imageFirst ? "laptop:order-2" : ""}`}>
                 <h2 id={`${area.slug}-titulo`} className="text-h2">
                   {area.name}
                 </h2>
@@ -46,7 +47,9 @@ export default function QueHacemosPage() {
                   {area.figures.map((figure) => (
                     <div key={figure.label}>
                       <dt className="text-[0.9375rem] text-ink-600">{figure.label}</dt>
-                      <dd className="num mt-1 text-h2 font-semibold text-petrol-700 [font-stretch:108%]">{figure.value}</dd>
+                      <dd className="mt-1 text-h2 font-semibold text-petrol-700 [font-stretch:108%]">
+                        <CountUp value={figure.value} />
+                      </dd>
                     </div>
                   ))}
                 </dl>
@@ -60,7 +63,7 @@ export default function QueHacemosPage() {
                   ))}
                 </ul>
               </div>
-              <div className={`relative aspect-[4/3] overflow-hidden bg-ink-800 ${imageFirst ? "laptop:order-1" : ""}`}>
+              <div className={`reveal-mask relative aspect-[4/3] overflow-hidden bg-ink-800 ${imageFirst ? "laptop:order-1" : ""}`}>
                 <Image
                   src={area.image.src}
                   alt={area.image.alt}

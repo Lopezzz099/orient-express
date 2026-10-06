@@ -12,7 +12,7 @@ const common = {
 };
 
 export const ArrowRight = ({ className = "size-5" }: IconProps) => (
-  <svg {...common} className={className}>
+  <svg {...common} className={`${className} transition-transform duration-300 ease-out-quart group-hover:translate-x-1`}>
     <path d="M4 12h16M14 6l6 6-6 6" />
   </svg>
 );

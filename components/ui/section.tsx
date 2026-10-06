@@ -42,7 +42,7 @@ export function SectionIntro({
   className?: string;
 }) {
   return (
-    <div className={`max-w-3xl ${className}`}>
+    <div className={`reveal max-w-3xl ${className}`}>
       <h2 id={id} className="text-h2">
         {title}
       </h2>

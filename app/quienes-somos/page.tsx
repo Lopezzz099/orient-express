@@ -42,7 +42,7 @@ export default function QuienesSomosPage() {
             <p className="font-serif text-h3 leading-snug text-ink-950">{mission}</p>
             <dl className="mt-12 grid gap-8 tablet:grid-cols-2">
               {values.map((value) => (
-                <div key={value.title} className="border-t border-line pt-4">
+                <div key={value.title} className="reveal border-t border-line pt-4">
                   <dt className="text-lg font-semibold">{value.title}</dt>
                   <dd className="mt-2 text-ink-600">{value.text}</dd>
                 </div>
@@ -58,9 +58,14 @@ export default function QuienesSomosPage() {
           title="Treinta años en la cuenca"
           lede="Una cronología de los hitos que ampliaron la compañía, de una concesión de explotación a una operación integrada."
         />
-        <ol className="mt-14 border-b border-line">
+        <ol className="relative mt-14 border-b border-line pl-9 tablet:pl-12">
+          {/* Riel: la línea de fondo es fija y la de color se dibuja con el scroll */}
+          <li aria-hidden="true" className="absolute top-0 bottom-0 left-[7px] w-0.5 bg-line tablet:left-[11px]">
+            <span className="fill-y block size-full bg-petrol-700" />
+          </li>
           {timeline.map((event) => (
-            <li key={event.year} className="grid gap-2 border-t border-line py-7 tablet:grid-cols-[9rem_1fr] tablet:gap-8 laptop:grid-cols-[12rem_1fr_1.4fr]">
+            <li key={event.year} className="reveal relative grid gap-2 border-t border-line py-7 tablet:grid-cols-[9rem_1fr] tablet:gap-8 laptop:grid-cols-[12rem_1fr_1.4fr]">
+              <span aria-hidden="true" className="absolute top-9 -left-9 size-4 border-[3px] border-mist bg-petrol-700 tablet:-left-12 tablet:top-10 tablet:size-[1.375rem]" />
               <p className="num text-h2 font-semibold text-petrol-700 [font-stretch:108%]">{event.year}</p>
               <h3 className="text-h3">{event.title}</h3>
               <p className="text-ink-600 tablet:col-start-2 laptop:col-start-3">{event.text}</p>
@@ -73,7 +78,7 @@ export default function QuienesSomosPage() {
         <SectionIntro id="liderazgo-titulo" title="Liderazgo" lede="El equipo que conduce la compañía. Las personas que se presentan son ficticias." />
         <ul className="mt-12 grid gap-x-16 gap-y-10 laptop:grid-cols-2">
           {leadership.map((person) => (
-            <li key={person.name} className="flex gap-5 border-t border-line pt-6">
+            <li key={person.name} className="reveal flex gap-5 border-t border-line pt-6">
               <span
                 aria-hidden="true"
                 className="flex size-14 shrink-0 items-center justify-center bg-petrol-900 text-lg font-semibold text-white [font-stretch:112%]"
@@ -99,7 +104,7 @@ export default function QuienesSomosPage() {
         <div className="mt-12 grid gap-14 laptop:grid-cols-[1.3fr_1fr] laptop:gap-20">
           <dl className="grid gap-8 tablet:grid-cols-2">
             {governancePillars.map((pillar) => (
-              <div key={pillar.title} className="border-t border-white/25 pt-4">
+              <div key={pillar.title} className="reveal border-t border-white/25 pt-4">
                 <dt className="text-lg font-semibold text-white">{pillar.title}</dt>
                 <dd className="mt-2 text-ink-300">{pillar.text}</dd>
               </div>

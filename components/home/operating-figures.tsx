@@ -1,5 +1,6 @@
 import { TriangleDown, TriangleUp } from "@/components/ui/icons";
 import { Section, SectionIntro } from "@/components/ui/section";
+import { CountUp } from "@/components/ui/count-up";
 import { formatKpi, kpiNote, operatingFigures, variation } from "@/lib/kpis";
 
 export function OperatingFigures() {
@@ -27,13 +28,13 @@ export function OperatingFigures() {
               {operatingFigures.map((kpi) => {
                 const change = variation(kpi);
                 return (
-                  <tr key={kpi.label} className="border-b border-white/15 align-baseline">
+                  <tr key={kpi.label} className="reveal border-b border-white/15 align-baseline">
                     <th scope="row" className="py-5 pr-4 font-normal">
                       <span className="block text-base font-medium text-white">{kpi.label}</span>
                       <span className="block text-label text-petrol-100">{kpi.unit}</span>
                     </th>
                     <td className="num py-5 pr-4 text-right text-h3 font-semibold [font-stretch:108%] text-white">
-                      {formatKpi(kpi.current, kpi.digits)}
+                      <CountUp value={formatKpi(kpi.current, kpi.digits)} />
                     </td>
                     <td className="num hidden py-5 pr-4 text-right text-ink-300 tablet:table-cell">
                       {formatKpi(kpi.previous, kpi.digits)}

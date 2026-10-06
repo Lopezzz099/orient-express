@@ -51,7 +51,7 @@ export function ContactDirectory() {
 
         <ul className="border-b border-line">
           {directory.map((row) => (
-            <li key={row.audience} className="grid gap-1 border-t border-line py-5 tablet:grid-cols-[12rem_1fr] tablet:gap-8">
+            <li key={row.audience} className="reveal grid gap-1 border-t border-line py-5 tablet:grid-cols-[12rem_1fr] tablet:gap-8">
               <h3 className="text-base font-semibold">{row.audience}</h3>
               <div>
                 <p className="text-ink-600">{row.text}</p>

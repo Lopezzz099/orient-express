@@ -22,7 +22,7 @@ export function NewsFeature() {
       </div>
 
       <div className="mt-12 grid gap-10 laptop:grid-cols-[1.4fr_1fr] laptop:gap-16">
-        <article className="group">
+        <article className="reveal group">
           <Link href={`/prensa/${lead.slug}`} className="block">
             <div className="relative aspect-[16/10] overflow-hidden bg-ink-800">
               <Image
@@ -45,7 +45,7 @@ export function NewsFeature() {
 
         <ul className="flex flex-col border-b border-line">
           {others.map((item) => (
-            <li key={item.slug} className="border-t border-line">
+            <li key={item.slug} className="reveal border-t border-line">
               <article>
                 <Link href={`/prensa/${item.slug}`} className="group flex flex-col gap-2 py-6">
                   <div className="flex items-center gap-3 text-[0.9375rem] text-ink-600">
