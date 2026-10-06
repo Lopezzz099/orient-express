@@ -9,7 +9,7 @@ export function SustainabilityBand() {
   return (
     <Section labelledBy="sustentabilidad-titulo">
       <div className="grid items-center gap-12 laptop:grid-cols-[0.9fr_1.1fr] laptop:gap-20">
-        <div className="reveal-mask relative aspect-[4/3] overflow-hidden bg-ink-800 laptop:aspect-[4/5]">
+        <div className="relative aspect-[4/3] overflow-hidden bg-ink-800 laptop:aspect-[4/5]">
           <Image
             src={media.eolico.src}
             alt={media.eolico.alt}

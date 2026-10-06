@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm, type FieldDef } from "@/components/forms/contact-form";
+import { Icon } from "@/components/ui/icon-map";
 import { PageHero } from "@/components/ui/page-hero";
 import { Section } from "@/components/ui/section";
 import { media } from "@/lib/media";
@@ -82,16 +83,26 @@ export default function ContactoPage() {
               <h2 id="sede-titulo" className="text-h3">
                 Sede central
               </h2>
-              <address className="mt-4 not-italic text-ink-600">
-                {site.address.street}
-                <br />
-                {site.address.postalCode} {site.address.city}
-                <br />
-                {site.address.region}, {site.address.country}
-                <br />
-                <span className="num">{site.phone}</span>
+              <address className="mt-4 space-y-3 not-italic text-ink-600">
+                <p className="flex gap-3">
+                  <Icon name="map-pin" className="mt-0.5 size-5 shrink-0 text-petrol-700" />
+                  <span>
+                    {site.address.street}
+                    <br />
+                    {site.address.postalCode} {site.address.city}
+                    <br />
+                    {site.address.region}, {site.address.country}
+                  </span>
+                </p>
+                <p className="flex items-center gap-3">
+                  <Icon name="phone" className="size-5 shrink-0 text-petrol-700" />
+                  <span className="num">{site.phone}</span>
+                </p>
               </address>
-              <p className="mt-3 text-[0.9375rem] text-ink-600">Atención de lunes a viernes, de 9 a 18.</p>
+              <p className="mt-3 flex items-center gap-3 text-[0.9375rem] text-ink-600">
+                <Icon name="clock" className="size-5 shrink-0 text-petrol-700" />
+                Atención de lunes a viernes, de 9 a 18.
+              </p>
             </div>
             <div>
               <h2 className="text-h3">Escribir directamente</h2>

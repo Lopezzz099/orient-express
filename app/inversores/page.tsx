@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ButtonAnchor } from "@/components/ui/button";
 import { Download } from "@/components/ui/icons";
+import { Icon, IconBadge } from "@/components/ui/icon-map";
 import { PageHero } from "@/components/ui/page-hero";
 import { Section, SectionIntro } from "@/components/ui/section";
 import { SectionNav } from "@/components/ui/section-nav";
@@ -50,7 +51,8 @@ export default function InversoresPage() {
             <ol className="mt-4 border-b border-line">
               {upcoming.map((event) => (
                 <li key={event.date} className="reveal grid gap-1 border-t border-line py-5 tablet:grid-cols-[11rem_1fr] tablet:gap-8">
-                  <time dateTime={event.date} className="num text-lg font-semibold text-petrol-700">
+                  <time dateTime={event.date} className="num flex items-center gap-2 text-lg font-semibold text-petrol-700">
+                    <Icon name="calendar" className="size-5 shrink-0" />
                     {formatShortDate(event.date)}
                   </time>
                   <div>
@@ -86,13 +88,16 @@ export default function InversoresPage() {
         <ul className="mt-12 border-b border-line">
           {investorDocuments.map((doc) => (
             <li key={doc.slug} className="reveal grid gap-4 border-t border-line py-6 tablet:grid-cols-[1fr_auto] tablet:items-center tablet:gap-10">
-              <div>
+              <div className="flex gap-4">
+                <IconBadge name="file-text" className="hidden tablet:inline-flex" />
+                <div>
                 <div className="flex flex-wrap items-center gap-3 text-[0.9375rem] text-ink-600">
                   <span className={tag}>{doc.category}</span>
                   <time dateTime={doc.date}>{formatDate(doc.date)}</time>
                 </div>
                 <h3 className="mt-2 text-h3">{doc.title}</h3>
                 <p className="mt-1 max-w-prose text-ink-600">{doc.description}</p>
+                </div>
               </div>
               <ButtonAnchor
                 href={`/documentos/${doc.file}`}

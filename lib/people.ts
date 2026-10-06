@@ -1,3 +1,5 @@
+import type { IconName } from "./icon-names";
+
 /** Personas ficticias. Cualquier parecido con personas reales es casual. */
 export type Person = {
   name: string;
@@ -48,18 +50,22 @@ export const board: Person[] = [
 
 export const governancePillars = [
   {
+    icon: "landmark" as IconName,
     title: "Directorio y comités",
     text: "El directorio tiene cinco miembros, tres de ellos independientes. El Comité de Auditoría, el de Sustentabilidad y el de Riesgos se reúnen al menos cuatro veces por año.",
   },
   {
+    icon: "scroll-text" as IconName,
     title: "Código de conducta",
     text: "Rige para empleados, directores y proveedores. Incluye reglas sobre conflictos de interés, regalos y relación con funcionarios públicos.",
   },
   {
+    icon: "message-warning" as IconName,
     title: "Línea de denuncias",
     text: "Un canal externo y confidencial recibe consultas y denuncias las 24 horas. Cada caso se registra y se informa al Comité de Auditoría.",
   },
   {
+    icon: "shield-alert" as IconName,
     title: "Gestión de riesgos",
     text: "La matriz de riesgos corporativos se revisa cada año con el directorio. Incluye riesgos operativos, ambientales, regulatorios y financieros.",
   },

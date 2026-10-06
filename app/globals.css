@@ -164,6 +164,12 @@
     z-index: 0;
   }
 
+  /* Iconos de lucide con el trazo recto del resto de la interfaz */
+  svg.lucide {
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+  }
+
   /* Controles de zoom con objetivo táctil de 44 px */
   .leaflet-touch .leaflet-bar a,
   .leaflet-bar a {
@@ -225,13 +231,13 @@
 
   @keyframes flow {
     to {
-      background-position: -2rem 0;
+      background-position: 2rem 0;
     }
   }
 
   @keyframes flow-y {
     to {
-      background-position: 0 -2rem;
+      background-position: 0 2rem;
     }
   }
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { IconBadge } from "@/components/ui/icon-map";
 import { PageHero } from "@/components/ui/page-hero";
 import { Section } from "@/components/ui/section";
 import { SectionNav } from "@/components/ui/section-nav";
@@ -29,11 +30,14 @@ export default function SustentabilidadPage() {
         <Section key={pillar.id} id={pillar.id} labelledBy={`${pillar.id}-titulo`} tone={index % 2 === 0 ? "light" : "mist"}>
           <div className="grid gap-10 laptop:grid-cols-[1fr_1.6fr] laptop:gap-20">
             <div>
-              <h2 id={`${pillar.id}-titulo`} className="text-h2">
-                {pillar.title}
-              </h2>
+              <div className="flex items-center gap-4">
+                <IconBadge name={pillar.icon} className="size-14" />
+                <h2 id={`${pillar.id}-titulo`} className="text-h2">
+                  {pillar.title}
+                </h2>
+              </div>
               <p className="mt-5 font-serif text-lede text-ink-600">{pillar.intro}</p>
-              <div className="reveal-mask relative mt-8 hidden aspect-[4/3] overflow-hidden bg-ink-800 laptop:block">
+              <div className="relative mt-8 hidden aspect-[4/3] overflow-hidden bg-ink-800 laptop:block">
                 <Image
                   src={pillar.image.src}
                   alt={pillar.image.alt}

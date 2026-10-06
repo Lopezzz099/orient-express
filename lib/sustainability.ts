@@ -1,3 +1,4 @@
+import type { IconName } from "./icon-names";
 import { media, type Media } from "./media";
 
 export type Commitment = {
@@ -9,6 +10,7 @@ export type Commitment = {
 
 export type SustainabilityPillar = {
   id: string;
+  icon: IconName;
   title: string;
   intro: string;
   image: Media;
@@ -19,6 +21,7 @@ export type SustainabilityPillar = {
 export const pillars: SustainabilityPillar[] = [
   {
     id: "ambiente",
+    icon: "wind",
     title: "Compromisos ambientales",
     intro:
       "Medimos emisiones, agua y residuos en cada instalación y publicamos los resultados cada año. Las metas se revisan con el Comité de Sustentabilidad del directorio.",
@@ -46,6 +49,7 @@ export const pillars: SustainabilityPillar[] = [
   },
   {
     id: "seguridad",
+    icon: "hard-hat",
     title: "Seguridad operativa",
     intro:
       "Un incidente en una planta o en un ducto puede lastimar a personas y al ambiente. Por eso la seguridad tiene un comité propio, auditorías independientes y autoridad para detener cualquier tarea.",
@@ -73,6 +77,7 @@ export const pillars: SustainabilityPillar[] = [
   },
   {
     id: "comunidades",
+    icon: "users",
     title: "Comunidades",
     intro:
       "Trabajamos en territorios donde viven personas, comunidades mapuche y productores. Consultamos antes de iniciar obras, informamos con regularidad y abrimos un canal de reclamos con respuesta por escrito.",

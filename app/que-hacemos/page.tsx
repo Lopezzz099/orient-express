@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button";
+import { IconBadge } from "@/components/ui/icon-map";
 import { ArrowRight } from "@/components/ui/icons";
 import { CountUp } from "@/components/ui/count-up";
 import { PageHero } from "@/components/ui/page-hero";
@@ -38,9 +39,12 @@ export default function QueHacemosPage() {
           <Section key={area.slug} id={area.slug} labelledBy={`${area.slug}-titulo`} tone={index % 2 === 0 ? "light" : "mist"}>
             <div className="grid items-center gap-10 laptop:grid-cols-2 laptop:gap-20">
               <div className={`reveal ${imageFirst ? "laptop:order-2" : ""}`}>
-                <h2 id={`${area.slug}-titulo`} className="text-h2">
-                  {area.name}
-                </h2>
+                <div className="flex items-center gap-4">
+                  <IconBadge name={area.icon} className="size-14" />
+                  <h2 id={`${area.slug}-titulo`} className="text-h2">
+                    {area.name}
+                  </h2>
+                </div>
                 <p className="mt-5 max-w-prose font-serif text-lede text-ink-600">{area.detail}</p>
 
                 <dl className="mt-8 grid grid-cols-2 gap-6 border-y border-line py-6">
@@ -63,7 +67,7 @@ export default function QueHacemosPage() {
                   ))}
                 </ul>
               </div>
-              <div className={`reveal-mask relative aspect-[4/3] overflow-hidden bg-ink-800 ${imageFirst ? "laptop:order-1" : ""}`}>
+              <div className={`relative aspect-[4/3] overflow-hidden bg-ink-800 ${imageFirst ? "laptop:order-1" : ""}`}>
                 <Image
                   src={area.image.src}
                   alt={area.image.alt}

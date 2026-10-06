@@ -1,7 +1,9 @@
+import type { IconName } from "./icon-names";
 import { media, type Media } from "./media";
 
 export type BusinessArea = {
   slug: string;
+  icon: IconName;
   name: string;
   summary: string;
   detail: string;
@@ -13,6 +15,7 @@ export type BusinessArea = {
 export const businessAreas: BusinessArea[] = [
   {
     slug: "exploracion-y-produccion",
+    icon: "droplets",
     name: "Exploración y producción",
     summary: "Tres áreas operadas en la cuenca neuquina, con perforación de pozos horizontales y producción de petróleo y gas.",
     detail:
@@ -30,6 +33,7 @@ export const businessAreas: BusinessArea[] = [
   },
   {
     slug: "refinacion",
+    icon: "factory",
     name: "Refinación",
     summary: "Refinería Río Limay: naftas, gasoil, GLP y asfaltos para clientes industriales y distribuidores del sur del país.",
     detail:
@@ -47,6 +51,7 @@ export const businessAreas: BusinessArea[] = [
   },
   {
     slug: "logistica-y-transporte",
+    icon: "ship",
     name: "Logística y transporte",
     summary: "Oleoductos, estaciones de bombeo y dos terminales que conectan la cuenca con el mercado interno y la exportación.",
     detail:
@@ -64,6 +69,7 @@ export const businessAreas: BusinessArea[] = [
   },
   {
     slug: "energias-de-transicion",
+    icon: "sun",
     name: "Energías de transición",
     summary: "Generación solar, electrificación de yacimientos y proyectos piloto para reducir las emisiones de las operaciones.",
     detail:

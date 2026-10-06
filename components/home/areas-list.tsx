@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { IconBadge } from "@/components/ui/icon-map";
 import { ArrowRight } from "@/components/ui/icons";
 import { Section, SectionIntro } from "@/components/ui/section";
 import { businessAreas } from "@/lib/areas";
@@ -40,7 +41,10 @@ export function AreasList() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <h3 className="text-h3">{area.name}</h3>
+                  <div className="flex items-center gap-3">
+                    <IconBadge name={area.icon} />
+                    <h3 className="text-h3">{area.name}</h3>
+                  </div>
                   <p className="mt-2 max-w-xl text-ink-600">{area.summary}</p>
                   <dl className="mt-4 flex flex-wrap gap-x-8 gap-y-2">
                     {area.figures.map((figure) => (

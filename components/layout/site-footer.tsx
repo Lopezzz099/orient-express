@@ -2,6 +2,7 @@ import Link from "next/link";
 import { contactNav, primaryNav } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { pageContainer, textLinkInverse } from "@/lib/ui";
+import { Icon } from "@/components/ui/icon-map";
 import { LogoMark } from "./logo";
 
 const audiences = [
@@ -20,14 +21,21 @@ export function SiteFooter() {
             <LogoMark />
             <p translate="no" className="text-lg font-bold tracking-[0.08em] [font-stretch:118%]">ORIENT EXPRESS</p>
           </div>
-          <address className="mt-6 max-w-xs text-[0.9375rem] not-italic leading-relaxed">
-            {site.address.street}
-            <br />
-            {site.address.postalCode} {site.address.city}
-            <br />
-            {site.address.region}, {site.address.country}
-            <br />
-            <span className="num">{site.phone}</span>
+          <address className="mt-6 max-w-xs space-y-3 text-[0.9375rem] not-italic leading-relaxed">
+            <p className="flex gap-3">
+              <Icon name="map-pin" className="mt-0.5 size-5 shrink-0 text-signal-500" />
+              <span>
+                {site.address.street}
+                <br />
+                {site.address.postalCode} {site.address.city}
+                <br />
+                {site.address.region}, {site.address.country}
+              </span>
+            </p>
+            <p className="flex items-center gap-3">
+              <Icon name="phone" className="size-5 shrink-0 text-signal-500" />
+              <span className="num">{site.phone}</span>
+            </p>
           </address>
         </div>
 

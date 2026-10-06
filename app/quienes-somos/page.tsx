@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { CountUp } from "@/components/ui/count-up";
+import { Icon } from "@/components/ui/icon-map";
 import { PageHero } from "@/components/ui/page-hero";
 import { Section, SectionIntro } from "@/components/ui/section";
 import { media } from "@/lib/media";
 import { pageMetadata } from "@/lib/metadata";
 import { board, governancePillars, leadership } from "@/lib/people";
-import { mission, timeline, values } from "@/lib/timeline";
+import { identityFacts, mission, timeline, values } from "@/lib/timeline";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
@@ -35,15 +38,40 @@ export default function QuienesSomosPage() {
 
       <Section labelledBy="mision-titulo">
         <div className="grid gap-12 laptop:grid-cols-[1fr_1.4fr] laptop:gap-20">
-          <h2 id="mision-titulo" className="text-h2">
-            Misión
-          </h2>
+          <div className="laptop:sticky laptop:top-28 laptop:self-start">
+            <h2 id="mision-titulo" className="text-h2">
+              Misión
+            </h2>
+            <div className="relative mt-8 aspect-[4/3] overflow-hidden bg-ink-800">
+              <Image
+                src={media.plantaGas.src}
+                alt={media.plantaGas.alt}
+                width={media.plantaGas.width}
+                height={media.plantaGas.height}
+                sizes="(min-width: 66rem) 40vw, 100vw"
+                className="size-full object-cover"
+              />
+            </div>
+            <dl className="mt-6 grid grid-cols-3 gap-4">
+              {identityFacts.map((fact) => (
+                <div key={fact.label} className="border-t border-line pt-3">
+                  <dd className="text-h2 font-semibold text-petrol-700 [font-stretch:108%]">
+                    <CountUp value={fact.value} />
+                  </dd>
+                  <dt className="mt-1 text-[0.9375rem] text-ink-600">{fact.label}</dt>
+                </div>
+              ))}
+            </dl>
+          </div>
           <div>
             <p className="font-serif text-h3 leading-snug text-ink-950">{mission}</p>
             <dl className="mt-12 grid gap-8 tablet:grid-cols-2">
               {values.map((value) => (
                 <div key={value.title} className="reveal border-t border-line pt-4">
-                  <dt className="text-lg font-semibold">{value.title}</dt>
+                  <dt className="flex items-center gap-3 text-lg font-semibold">
+                    <Icon name={value.icon} className="size-6 shrink-0 text-petrol-700" />
+                    {value.title}
+                  </dt>
                   <dd className="mt-2 text-ink-600">{value.text}</dd>
                 </div>
               ))}
@@ -105,7 +133,10 @@ export default function QuienesSomosPage() {
           <dl className="grid gap-8 tablet:grid-cols-2">
             {governancePillars.map((pillar) => (
               <div key={pillar.title} className="reveal border-t border-white/25 pt-4">
-                <dt className="text-lg font-semibold text-white">{pillar.title}</dt>
+                <dt className="flex items-center gap-3 text-lg font-semibold text-white">
+                  <Icon name={pillar.icon} className="size-6 shrink-0 text-signal-500" />
+                  {pillar.title}
+                </dt>
                 <dd className="mt-2 text-ink-300">{pillar.text}</dd>
               </div>
             ))}

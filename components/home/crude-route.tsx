@@ -48,7 +48,7 @@ export function CrudeRoute() {
             {index < stops.length - 1 ? (
               <span
                 aria-hidden="true"
-                className="pipe reveal-mask absolute top-11 left-[21px] h-[calc(100%+0.25rem)] w-0.5 laptop:top-[21px] laptop:left-11 laptop:h-0.5 laptop:w-[calc(100%-0.75rem)]"
+                className="pipe absolute top-11 left-[21px] h-[calc(100%+0.25rem)] w-0.5 laptop:top-[21px] laptop:left-11 laptop:h-0.5 laptop:w-[calc(100%-0.75rem)]"
               />
             ) : null}
             <div className="absolute top-0 left-0 laptop:static">

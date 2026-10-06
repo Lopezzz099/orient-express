@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useMemo, useRef, useState } from "react";
+import { Icon } from "@/components/ui/icon-map";
 import { ContactForm, type FieldDef } from "@/components/forms/contact-form";
 import { Button } from "@/components/ui/button";
 import { formatDate } from "@/lib/format";
@@ -148,9 +149,14 @@ export function CareersBoard() {
                       <h3 className="text-h3">{job.title}</h3>
                       <p className="mt-2 flex flex-wrap items-center gap-2 text-[0.9375rem] text-ink-600">
                         <span className={tag}>{job.area}</span>
-                        <span>{job.location}</span>
-                        <span aria-hidden="true">·</span>
-                        <span>{job.schedule}</span>
+                        <span className="inline-flex items-center gap-1.5">
+                          <Icon name="map-pin" className="size-4 shrink-0 text-petrol-700" />
+                          {job.location}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5">
+                          <Icon name="clock" className="size-4 shrink-0 text-petrol-700" />
+                          {job.schedule}
+                        </span>
                       </p>
                       <p className="mt-3 max-w-prose text-ink-600">{job.summary}</p>
                     </div>

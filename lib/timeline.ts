@@ -1,3 +1,5 @@
+import type { IconName } from "./icon-names";
+
 export type TimelineEvent = { year: number; title: string; text: string };
 
 export const timeline: TimelineEvent[] = [
@@ -47,8 +49,15 @@ export const mission =
   "Producir, procesar y transportar energía con seguridad, con respeto por el entorno y con resultados que puedan verificarse.";
 
 export const values = [
-  { title: "Seguridad primero", text: "Ninguna meta de producción justifica una tarea que no se pueda hacer con seguridad." },
-  { title: "Rigor técnico", text: "Las decisiones se apoyan en datos, en procedimientos escritos y en revisiones independientes." },
-  { title: "Palabra cumplida", text: "Informamos lo que hacemos, también cuando el resultado no es el esperado." },
-  { title: "Arraigo", text: "Operamos en la provincia hace treinta años y contratamos primero en las localidades donde trabajamos." },
+  { icon: "shield-check" as IconName, title: "Seguridad primero", text: "Ninguna meta de producción justifica una tarea que no se pueda hacer con seguridad." },
+  { icon: "ruler" as IconName, title: "Rigor técnico", text: "Las decisiones se apoyan en datos, en procedimientos escritos y en revisiones independientes." },
+  { icon: "badge-check" as IconName, title: "Palabra cumplida", text: "Informamos lo que hacemos, también cuando el resultado no es el esperado." },
+  { icon: "map-pin" as IconName, title: "Arraigo", text: "Operamos en la provincia hace treinta años y contratamos primero en las localidades donde trabajamos." },
+];
+
+/** Datos de identidad para la sección de misión. */
+export const identityFacts = [
+  { value: "1994", label: "año de fundación" },
+  { value: "1.340", label: "personas trabajan en la compañía" },
+  { value: "7", label: "instalaciones operadas" },
 ];
